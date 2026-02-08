@@ -3,7 +3,19 @@ from discord.ext import commands
 import yt_dlp
 import asyncio
 import random
-import os
+
+ydl_opts = {
+    "format": "bestaudio/best",
+    "noplaylist": True,
+    "quiet": True,
+    "default_search": "ytsearch",
+    "source_address": "0.0.0.0",
+    "extractor_args": {
+        "youtube": {
+            "player_client": ["android"]
+        }
+    },
+}
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -190,10 +202,16 @@ async def play(ctx, *, search: str):
     if not ctx.voice_client:
         await ctx.author.voice.channel.connect()
 
-    with yt_dlp.YoutubeDL(ytdlp_opts) as ydl:
-        info = ydl.extract_info(search, download=False)
-        if "entries" in info:
-            info = info["entries"][0]
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(query, download=False)
+
+    if "entries" in info:
+        info = info["entries"][0]
+
+    url = info["url"]
+    source = discord.FFmpegPCMAudio(url)
+
+    voice.play(source)
 
     song_queue.append(info["url"])
     song_titles.append({
@@ -267,8 +285,6 @@ async def on_ready():
     print("=" * 40)
     print(f"✅ 준비 완료: {bot.user}")
 
-
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
-
 
