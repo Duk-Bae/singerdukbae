@@ -6,6 +6,7 @@ import random
 import os
 
 ydl_opts = {
+    "cookiefile": "cookies.txt"
     "format": "bestaudio/best",
     "noplaylist": True,
     "quiet": True,
@@ -293,6 +294,7 @@ async def on_ready():
 
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
+
 
 
 
