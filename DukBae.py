@@ -266,4 +266,5 @@ async def on_ready():
     print("=" * 40)
     print(f"✅ 준비 완료: {bot.user}")
  
-bot.run("MTMyMzA4MDQ4Njc2NzAzODY3NA.GUiMro.-k6g7gqartETXagb2RN2SEjdau7r_7a4_Ek83w")
+bot.run("MTMyMzA4MDQ4Njc2NzAzODY3NA.GJMZBR.xQTmPbI-BxnVUxKkPO1Svx2o0yC2Fe4ZjLZ2Zs")
+
