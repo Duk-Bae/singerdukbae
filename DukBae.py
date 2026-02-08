@@ -3,6 +3,7 @@ from discord.ext import commands
 import yt_dlp
 import asyncio
 import random
+import os
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -265,6 +266,9 @@ async def setup(ctx):
 async def on_ready():
     print("=" * 40)
     print(f"✅ 준비 완료: {bot.user}")
- 
-bot.run("MTMyMzA4MDQ4Njc2NzAzODY3NA.GJMZBR.xQTmPbI-BxnVUxKkPO1Svx2o0yC2Fe4ZjLZ2Zs")
+
+
+access_token = os.environ["BOT_TOKEN"]
+bot.run(access_token)
+
 
