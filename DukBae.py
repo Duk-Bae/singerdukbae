@@ -3,6 +3,7 @@ from discord.ext import commands
 import yt_dlp
 import asyncio
 import random
+import os
 
 ydl_opts = {
     "format": "bestaudio/best",
@@ -287,4 +288,5 @@ async def on_ready():
 
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
+
 
