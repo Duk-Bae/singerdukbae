@@ -21,6 +21,8 @@ ydl_opts = {
 
     # ✅ 쿠키 파일 (같은 폴더에 cookies.txt 있어야 함)
     "cookiefile": "cookies.txt",
+    "verbose": True,
+    "nocheckcertificate": True,
 }
 
 intents = discord.Intents.default()
@@ -298,6 +300,7 @@ async def on_ready():
 
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
+
 
 
 
